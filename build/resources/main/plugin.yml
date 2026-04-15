@@ -1,0 +1,19 @@
+name: AuroraPunishNotify
+version: '1.0.0'
+main: online.auroracraft.aurorapunishnotify.AuroraPunishNotify
+api-version: '1.21'
+description: CMI punishment Discord notifications (Webhook / DiscordSRV)
+author: AuroraCraft
+depend:
+  - CMI
+softdepend:
+  - DiscordSRV
+commands:
+  aurorapunish:
+    description: AuroraPunishNotify commands
+    permission: aurorapunishnotify.admin
+    aliases: [apn]
+permissions:
+  aurorapunishnotify.admin:
+    description: Reload config
+    default: op

@@ -1,0 +1,196 @@
+# ============================================
+#       AuroraPunishNotify - Config
+#       by AuroraCraft (auroracraft.online)
+# ============================================
+
+# Chế độ gửi thông báo Discord:
+#   webhook    - Gửi qua Discord Webhook (KHÔNG cần DiscordSRV)
+#   discordsrv - Gửi qua bot DiscordSRV (cần DiscordSRV đã cài)
+mode: webhook
+
+# --- CẤU HÌNH WEBHOOK ---
+# Dùng khi mode: webhook
+webhook:
+  # URL Webhook Discord của bạn
+  url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN"
+  # Tên hiển thị của bot webhook
+  username: "⚖️ Liêm Security"
+  # Avatar của bot webhook (để trống = dùng avatar mặc định của webhook)
+  avatar_url: ""
+
+# --- CẤU HÌNH DISCORDSRV ---
+# Dùng khi mode: discordsrv
+discordsrv:
+  # ID của Discord channel (nhấp chuột phải vào channel > Copy Channel ID)
+  # Bật Developer Mode: Discord Settings > Advanced > Developer Mode
+  channel_id: "000000000000000000"
+
+# URL lấy avatar người chơi. Placeholder: {uuid}, {name}
+# Crafatar có overlay skin đẹp hơn mc-heads
+avatar_url: "https://crafatar.com/avatars/{uuid}?size=64&overlay"
+
+# Tên server hiển thị trong embed
+server_name: "Surland"
+
+# ============================================
+#   CẤU HÌNH THÔNG BÁO TỪNG LOẠI XỬ PHẠT
+# ============================================
+# Placeholders dùng được:
+#   {player}    - Tên người vi phạm
+#   {executor}  - Người thực thi lệnh
+#   {reason}    - Lý do
+#   {duration}  - Thời hạn (vĩnh viễn nếu null)
+#   {server}    - Tên server
+#   {timestamp} - Thời gian Unix (Discord format <t:{timestamp}:R>)
+
+notifications:
+
+  ban:
+    enabled: true
+    # Màu embed (decimal). Đỏ = 15158332, Cam = 15105570, Vàng = 16776960
+    color: 15158332
+    title: "🌲 [{server}] KHÓA MÕM"
+    # true = thông báo này là permanent ban, false = tempban
+    # (plugin tự phân biệt, bạn không cần chỉnh)
+    fields:
+      - name: "👤 Người chơi"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Người thực thi"
+        value: "{executor}"
+        inline: true
+      - name: "⏳ Thời hạn"
+        value: "{duration}"
+        inline: true
+      - name: "📋 Lý do"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Máy chủ"
+        value: "{server}"
+        inline: true
+    footer: "AuroraCraft Punishment System"
+    show_avatar: true
+
+  tempban:
+    enabled: true
+    color: 15105570
+    title: "🌲 [{server}] CẤM TẠCH THỜI"
+    fields:
+      - name: "👤 Người chơi"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Người thực thi"
+        value: "{executor}"
+        inline: true
+      - name: "⏳ Thời hạn"
+        value: "{duration}"
+        inline: true
+      - name: "📋 Lý do"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Máy chủ"
+        value: "{server}"
+        inline: true
+    footer: "AuroraCraft Punishment System"
+    show_avatar: true
+
+  mute:
+    enabled: true
+    color: 16776960
+    title: "🌲 [{server}] KHÓA CHAT"
+    fields:
+      - name: "👤 Người chơi"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Người thực thi"
+        value: "{executor}"
+        inline: true
+      - name: "⏳ Thời hạn"
+        value: "{duration}"
+        inline: true
+      - name: "📋 Lý do"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Máy chủ"
+        value: "{server}"
+        inline: true
+    footer: "AuroraCraft Punishment System"
+    show_avatar: true
+
+  warn:
+    enabled: true
+    color: 3447003
+    title: "🌲 [{server}] CẢNH CÁO"
+    fields:
+      - name: "👤 Người chơi"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Người thực thi"
+        value: "{executor}"
+        inline: true
+      - name: "📋 Lý do"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Máy chủ"
+        value: "{server}"
+        inline: true
+    footer: "AuroraCraft Punishment System"
+    show_avatar: true
+
+  kick:
+    enabled: true
+    color: 9807270
+    title: "🌲 [{server}] TRỤC XUẤT"
+    fields:
+      - name: "👤 Người chơi"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Người thực thi"
+        value: "{executor}"
+        inline: true
+      - name: "📋 Lý do"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Máy chủ"
+        value: "{server}"
+        inline: true
+    footer: "AuroraCraft Punishment System"
+    show_avatar: true
+
+  unban:
+    enabled: true
+    color: 3066993
+    title: "🌲 [{server}] MỞ KHÓA"
+    fields:
+      - name: "👤 Người chơi"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Người thực thi"
+        value: "{executor}"
+        inline: true
+      - name: "🖥 Máy chủ"
+        value: "{server}"
+        inline: true
+    footer: "AuroraCraft Punishment System"
+    show_avatar: false
+
+  unmute:
+    enabled: true
+    color: 3066993
+    title: "🌲 [{server}] MỞ CHAT"
+    fields:
+      - name: "👤 Người chơi"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Người thực thi"
+        value: "{executor}"
+        inline: true
+      - name: "🖥 Máy chủ"
+        value: "{server}"
+        inline: true
+    footer: "AuroraCraft Punishment System"
+    show_avatar: false
+
+# Nhãn "vĩnh viễn" khi không có thời hạn
+permanent_label: "Vĩnh viễn"
+

@@ -1,0 +1,194 @@
+# ============================================
+#       AuroraPunishNotify - Config
+#       by AuroraCraft (auroracraft.online)
+# ============================================
+
+# Discord notification delivery mode:
+#   webhook    - Send via Discord Webhook (DiscordSRV NOT required)
+#   discordsrv - Send via DiscordSRV bot (requires DiscordSRV to be installed)
+mode: discordsrv
+
+# --- WEBHOOK CONFIGURATION ---
+# Used when mode: webhook
+webhook:
+  # Your Discord Webhook URL
+  url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+  # Display name of the webhook bot
+  username: "⚔️AuroraSurvival⚔️"
+  # Avatar of the webhook bot (leave empty = use the default webhook avatar)
+  avatar_url: ""
+
+# --- DISCORDSRV CONFIGURATION ---
+# Used when mode: discordsrv
+discordsrv:
+  # Discord channel ID (right-click the channel > Copy Channel ID)
+  # Enable Developer Mode: Discord Settings > Advanced > Developer Mode
+  channel_id: "000000000000000000"
+
+# URL used to fetch player avatars. Placeholders: {uuid}, {name}
+# Crafatar provides nicer skin rendering with overlay support
+avatar_url: "https://minotar.net/avatar/{username}"
+
+# Server name displayed in embeds
+server_name: "AuroraSurvival"
+
+# ============================================
+#     NOTIFICATION SETTINGS PER PUNISHMENT
+# ============================================
+# Available placeholders:
+#   {player}    - Name of the punished player
+#   {executor}  - Name of the staff who issued the punishment
+#   {reason}    - Reason for the punishment
+#   {duration}  - Duration (shows permanent_label if no duration set)
+#   {server}    - Server name
+#   {timestamp} - Unix timestamp (use in Discord as <t:{timestamp}:R>)
+
+notifications:
+
+  ban:
+    enabled: true
+    # Embed color (decimal). Red = 15158332, Orange = 15105570, Yellow = 16776960
+    color: 15158332
+    title: "🗡️ [{server}] BAN 🗡️"
+    # Note: The plugin auto-detects permanent ban vs tempban — no manual toggle needed
+    fields:
+      - name: "👥 Player"
+        value: "{player}"
+        inline: true
+      - name: "🛡 Issued By"
+        value: "{executor}"
+        inline: true
+      - name: "⏳ Duration"
+        value: "{duration}"
+        inline: true
+      - name: "📋 Reason"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Server"
+        value: "{server}"
+        inline: true
+    footer: "AuroraSurvival Punishment System"
+    show_avatar: true
+
+  tempban:
+    enabled: true
+    color: 15105570
+    title: "❌ [{server}] TEMPORARY BAN ❌"
+    fields:
+      - name: "👥 Player"
+        value: "{player}"
+        inline: true
+      - name: "⚔️ Issued By"
+        value: "{executor}"
+        inline: true
+      - name: "⏳ Duration"
+        value: "{duration}"
+        inline: true
+      - name: "📋 Reason"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Server"
+        value: "{server}"
+        inline: true
+    footer: "AuroraSurvival Punishment System"
+    show_avatar: true
+
+  mute:
+    enabled: true
+    color: 16776960
+    title: "💬 [{server}] MUTE 💬"
+    fields:
+      - name: "👥 Player"
+        value: "{player}"
+        inline: true
+      - name: "⚔️ Issued By"
+        value: "{executor}"
+        inline: true
+      - name: "⏳ Duration"
+        value: "{duration}"
+        inline: true
+      - name: "📋 Reason"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Server"
+        value: "{server}"
+        inline: true
+    footer: "AuroraSurvival Punishment System"
+    show_avatar: true
+
+  warn:
+    enabled: true
+    color: 3447003
+    title: "⚠️ [{server}] WARNING ⚠️"
+    fields:
+      - name: "👥 Player"
+        value: "{player}"
+        inline: true
+      - name: "⚔️ Issued By"
+        value: "{executor}"
+        inline: true
+      - name: "📋 Reason"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Server"
+        value: "{server}"
+        inline: true
+    footer: "AuroraSurvival Punishment System"
+    show_avatar: true
+
+  kick:
+    enabled: true
+    color: 9807270
+    title: "🦅 [{server}] KICK 🦅"
+    fields:
+      - name: "👥 Player"
+        value: "{player}"
+        inline: true
+      - name: "⚔️ Issued By"
+        value: "{executor}"
+        inline: true
+      - name: "📋 Reason"
+        value: "{reason}"
+        inline: false
+      - name: "🖥 Server"
+        value: "{server}"
+        inline: true
+    footer: "AuroraSurvival Punishment System"
+    show_avatar: true
+
+  unban:
+    enabled: true
+    color: 3066993
+    title: "🎉 [{server}] UNBAN 🎉"
+    fields:
+      - name: "👥 Player"
+        value: "{player}"
+        inline: true
+      - name: "⚔️ Issued By"
+        value: "{executor}"
+        inline: true
+      - name: "🖥 Server"
+        value: "{server}"
+        inline: true
+    footer: "AuroraSurvival Punishment System"
+    show_avatar: true
+
+  unmute:
+    enabled: true
+    color: 3066993
+    title: "🎉 [{server}] UNMUTE 🎉"
+    fields:
+      - name: "👥 Player"
+        value: "{player}"
+        inline: true
+      - name: "⚔️ Issued By"
+        value: "{executor}"
+        inline: true
+      - name: "🖥 Server"
+        value: "{server}"
+        inline: true
+    footer: "AuroraSurvival Punishment System"
+    show_avatar: true
+
+# Label shown for "Permanent" when no duration is set
+permanent_label: "Permanent"
