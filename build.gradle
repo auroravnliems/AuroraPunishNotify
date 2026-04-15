@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+}
+
+group = 'online.auroracraft'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://repo.papermc.io/repository/maven-public/' }
+    maven { url 'https://nexus.scarsz.me/content/groups/public/' }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
+    compileOnly 'com.github.Zrips:CMI-API:9.7.14.3'
+    compileOnly 'com.discordsrv:discordsrv:1.28.0'
+}
+
+jar {
+    archiveFileName = 'AuroraPunishNotify-' + version + '.jar'
+}
